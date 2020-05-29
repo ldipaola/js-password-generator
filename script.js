@@ -1,9 +1,9 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
-var specialCharsArr = [' ', '!', '"', '#', '$', '%', '&', "'", ')', '(', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
-
-//Input validation function to ensure number is being entered and between 8-128 characters
+//Special character array
+var specialCharsArr = [String.fromCharCode(32), '!', '"', '#', '$', '%', '&', "'", ')', '(', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
+console.log(specialCharsArr);
+//Input validation to ensure number is being entered and between 8-128 characters
 function inputValidation() {
   //regex numbers 0-9
   let numbers = /^[0-9]+$/;
@@ -17,31 +17,31 @@ function inputValidation() {
     inputValidation();
   }
 }
-//Random number generator function
+//Random number generator
 function randomNumberGenerator(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
 function generatePassword() {
-  var passwordCharLength = inputValidation();
-  var password = "";
-  var conditionArr = [];
+  let passwordCharLength = inputValidation();
+  let password = "";
+  let conditionArr = [];
   if(passwordCharLength){
-  var lowercaseChars = confirm("Would you like lowercase characters?");
+  let lowercaseChars = confirm("Would you like lowercase characters?");
   if(lowercaseChars) conditionArr.push("lower");
-  var uppercaseChars = confirm("Would you like uppercase characters?");
+  let uppercaseChars = confirm("Would you like uppercase characters?");
   if(uppercaseChars) conditionArr.push("upper");
-  var numericChars = confirm("Would you like numeric characters?");
+  let numericChars = confirm("Would you like numeric characters?");
   if(numericChars) conditionArr.push("numeric");
-  var specialChars = confirm("Would you like special characters?");
+  let specialChars = confirm("Would you like special characters?");
   if(specialChars) conditionArr.push("special");
   if(lowercaseChars === false && uppercaseChars === false && numericChars === false && specialChars === false){
     alert("at least one character type should be selected");
     return;
   }
-
-  for(var i = 0; i < passwordCharLength; i++){
-    var randomSelector = conditionArr[randomNumberGenerator(0,conditionArr.length-1)];
+  //loop for password generation
+  for(let i = 0; i < passwordCharLength; i++){
+    let randomSelector = conditionArr[randomNumberGenerator(0,conditionArr.length-1)];
     if(randomSelector === "lower"){
       password += String.fromCharCode(randomNumberGenerator(97,122));
     } else if(randomSelector === "upper"){
