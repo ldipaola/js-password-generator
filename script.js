@@ -2,7 +2,6 @@
 var generateBtn = document.querySelector("#generate");
 //Special character array
 var specialCharsArr = [String.fromCharCode(32), '!', '"', '#', '$', '%', '&', "'", ')', '(', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
-console.log(specialCharsArr);
 //Input validation to ensure number is being entered and between 8-128 characters
 function inputValidation() {
   //regex numbers 0-9
@@ -44,11 +43,11 @@ function generatePassword() {
     let randomSelector = conditionArr[randomNumberGenerator(0,conditionArr.length-1)];
     if(randomSelector === "lower"){
       password += String.fromCharCode(randomNumberGenerator(97,122));
-    } else if(randomSelector === "upper"){
+    }else if(randomSelector === "upper"){
       password += String.fromCharCode(randomNumberGenerator(65,90));
     }else if(randomSelector === "numeric"){
       password += String.fromCharCode(randomNumberGenerator(48,57));
-    } else if(randomSelector === "special"){
+    }else if(randomSelector === "special"){
       password += specialCharsArr[randomNumberGenerator(0, specialCharsArr.length-1)];
     }
     }
@@ -59,9 +58,8 @@ function generatePassword() {
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  console.log(password.length);
-  var passwordText = document.querySelector("#password");
+  let password = generatePassword();
+  let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
