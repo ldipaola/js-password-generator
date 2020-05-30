@@ -66,6 +66,7 @@ button[disabled] {
 
 button#generate {
   color: #565656;
+  margin-top: 16px;
 }
 #password {
   -webkit-appearance: none;
@@ -94,14 +95,26 @@ button#generate {
     margin: 0px 0px 0px 0px;
     padding: 10px 15px;
   }
+  label{
+    font-size: 0.8rem;
+  }
 
   #password {
     font-size: 1rem;
+  }
+}
+@media (max-width: 576px){
+  label.custom-control-label{
+    width: calc(100%/4);
+    align-content: center;
   }
 }
 
 @media (max-width: 500px) {
   .btn {
     font-size: 0.8rem;
+  }
+  label{
+    font-size: 0.6rem;
   }
 }

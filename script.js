@@ -1,5 +1,11 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var lowerEl = document.querySelector("#lower");
+var upperEl = document.querySelector("#upper");
+var numericEl = document.querySelector("#numeric");
+var specialEl = document.querySelector("#special");
+
+
 //Special character array
 var specialCharsArr = [String.fromCharCode(32), '!', '"', '#', '$', '%', '&', "'", ')', '(', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
 //Input validation to ensure number is being entered and between 8-128 characters
@@ -20,25 +26,22 @@ function inputValidation() {
 function randomNumberGenerator(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
-
+//push selected character types to an array and generate password
 function generatePassword() {
   let passwordCharLength = inputValidation();
   let password = "";
   let conditionArr = [];
   if(passwordCharLength){
-  let lowercaseChars = confirm("Would you like lowercase characters?");
-  if(lowercaseChars) conditionArr.push("lower");
-  let uppercaseChars = confirm("Would you like uppercase characters?");
-  if(uppercaseChars) conditionArr.push("upper");
-  let numericChars = confirm("Would you like numeric characters?");
-  if(numericChars) conditionArr.push("numeric");
-  let specialChars = confirm("Would you like special characters?");
-  if(specialChars) conditionArr.push("special");
-  if(lowercaseChars === false && uppercaseChars === false && numericChars === false && specialChars === false){
+  if(lowerEl.checked) conditionArr.push("lower");
+  if(upperEl.checked) conditionArr.push("upper");
+  if(numericEl.checked) conditionArr.push("numeric");
+  if(specialEl.checked) conditionArr.push("special");
+  if(lowerEl.checked === false && upperEl.checked === false && numericEl.checked === false && specialEl.checked === false){
     alert("at least one character type should be selected");
-    return;
+    return "No characters selected!";
   }
   //loop for password generation
+  //using randomly generated values from ASCII chart for lower, upper and numeric characters. special characters are from the specialCharsArr
   for(let i = 0; i < passwordCharLength; i++){
     let randomSelector = conditionArr[randomNumberGenerator(0,conditionArr.length-1)];
     if(randomSelector === "lower"){
@@ -67,3 +70,5 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+

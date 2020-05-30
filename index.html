@@ -11,10 +11,11 @@
   </head>
   <body>
     <main class="container">
-      <header>
-        <h1>Password Generator</h1>
-      </header>
+      
         <div class="jumbotron">
+          <header>
+            <h1>Password Generator</h1>
+          </header>
           <div class="card-header">
             <h2>Generate a Password</h2>
           </div>
@@ -26,8 +27,26 @@
               aria-label="Generated Password"
             ></textarea>
           </div>
-          <div class="card-footer text-center">
-            <button id="generate" class="btn btn-light">Generate Password</button>
+          <div class="card-footer">
+            <div class="row text-center">
+              <div class="col-6 col-sm custom-control custom-switch text-center">
+                <input type="checkbox" class="custom-control-input" value="lower" id="lower">
+                <label class="custom-control-label" for="lower">Lower</label>
+              </div>
+              <div class="col-6 col-sm custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="upper">
+                <label class="custom-control-label" for="upper">Upper</label>
+              </div>
+              <div class="col-6 col-sm custom-control custom-switch text-center">
+                <input type="checkbox" class="custom-control-input" id="numeric">
+                <label class="custom-control-label" for="numeric">Numeric</label>
+              </div>
+              <div class="col-6 col-sm custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="special">
+                <label class="custom-control-label" for="special">Special</label>
+              </div>
+            </div>
+            <div class="text-center"><button id="generate" class="btn btn-light">Generate Password</button></div>
           </div>
         </div>
       </main>
